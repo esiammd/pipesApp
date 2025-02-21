@@ -1,5 +1,9 @@
 import { LOCALE_ID, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
+
+import { providePrimeNG } from 'primeng/config';
+import Aura from '@primeng/themes/aura';
 
 import { SharedModule } from './shared/shared.module';
 import { AppRoutingModule } from './app-routing.module';
@@ -26,7 +30,16 @@ registerLocaleData(localePtBr, 'pt-BR');
   providers: [
     {
       provide: LOCALE_ID, useValue: 'es-ES'
-    }
+    },
+    provideAnimationsAsync(),
+    providePrimeNG({
+        theme: {
+            preset: Aura,
+            options: {
+              darkModeSelector: true
+          }
+        }
+    })
   ],
   bootstrap: [AppComponent]
 })
